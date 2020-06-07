@@ -1,5 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function Search() {
-  return <h2>this is inside the Search component</h2>;
+  const [value, setValue] = useState("");
+
+  return (
+    <input
+      type="text"
+      value={value}
+      placeholder="Search"
+      onChange={e => setValue(e.target.value)}
+    />
+  );
 }
