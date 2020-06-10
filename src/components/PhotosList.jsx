@@ -5,8 +5,7 @@ export default function PhotosList({ photos }) {
   return (
     <div className="photos">
       {photos.length > 0 ? (
-        //   Todo: make sure that you pass the url of the photo instead of the whole photo
-        photos.map(photo => <Photo photo={photo} />)
+        photos.map(photo => <Photo key={photo.id} photo={photo} />)
       ) : (
         <h2>Search for something to see the photos!</h2>
       )}

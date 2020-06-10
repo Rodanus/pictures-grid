@@ -1,5 +1,5 @@
 import React from "react";
 
-export default function Photo() {
-  return <h3>this is inside the Photo component</h3>;
+export default function Photo({ photo }) {
+  return <img src={photo.urls.small} alt={photo.alt_description} />;
 }
