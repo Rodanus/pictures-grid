@@ -1,6 +1,8 @@
 import React, { useState, useCallback } from "react";
 import axios from "axios";
 import debounce from "lodash/debounce";
+import "./Search.css";
+import searchIcon from "../svg/search-icon.svg";
 
 export default function Search({ setPhotos }) {
   const [value, setValue] = useState("");
