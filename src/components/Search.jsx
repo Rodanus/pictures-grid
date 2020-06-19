@@ -37,11 +37,15 @@ export default function Search({ setPhotos }) {
   };
 
   return (
-    <input
-      type="text"
-      value={value}
-      placeholder="Search"
-      onChange={e => onChange(e)}
-    />
+    <div className="search-con">
+      <img src={searchIcon} alt="Search Icon SVG" className="search-icon" />
+
+      <input
+        type="text"
+        value={value}
+        placeholder="Search"
+        onChange={e => onChange(e)}
+      />
+    </div>
   );
 }
