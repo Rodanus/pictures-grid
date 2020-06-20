@@ -16,7 +16,7 @@ export default function Search({ setPhotos }) {
       console.log("Calling the api...");
       axios
         .get(
-          `https://api.unsplash.com/search/photos?page=1&per_page=4&query=${trimedValue}&client_id=${process.env.REACT_APP_CLIENTID}`
+          `https://api.unsplash.com/search/photos?page=1&per_page=10&query=${trimedValue}&client_id=${process.env.REACT_APP_CLIENTID}`
         )
         .then(res => {
           setPhotos(res.data.results);
