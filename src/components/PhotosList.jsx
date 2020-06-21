@@ -1,5 +1,6 @@
 import React from "react";
 import Photo from "./Photo";
+import "./PhotosList.css";
 
 export default function PhotosList({ photos }) {
   return (
