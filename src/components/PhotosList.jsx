@@ -10,12 +10,7 @@ export default function PhotosList({ photos }) {
         <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 600: 2, 900: 3 }}>
           <Masonry gutter="10px">
             {photos.map((photo, id) => (
-              <img
-                key={id}
-                src={photo.urls.small}
-                alt={photo.alt_description}
-                style={{ width: "100%", display: "block" }}
-              />
+              <Photo key={id} photo={photo} />
             ))}
           </Masonry>
         </ResponsiveMasonry>
