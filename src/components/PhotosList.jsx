@@ -14,9 +14,7 @@ export default function PhotosList({ photos }) {
             ))}
           </Masonry>
         </ResponsiveMasonry>
-      ) : (
-        <h2>Search for something to see the photos!</h2>
-      )}
+      ) : null}
     </div>
   );
 }
