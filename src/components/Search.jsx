@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import axios from "axios";
 import debounce from "lodash/debounce";
 import "./Search.css";
@@ -35,6 +35,23 @@ export default function Search({ setPhotos }) {
     setValue(e.target.value);
     debouncedGetPhotos(e.target.value);
   };
+
+  useEffect(() => {
+    // Set a random nature photo from collections as the background.
+    const fetchingArandomPhoto = async () => {
+      const backgroundPhoto = await fetch(
+        `https://api.unsplash.com/photos/random?orientation=landscape&collections=30098596,8266650,9468595&content_filter=high&client_id=${process.env.REACT_APP_CLIENTID}`
+      ).then(res => res.json());
+
+      const searchContainer = document.querySelector(".search-container");
+
+      searchContainer.style.background = `url(${backgroundPhoto.urls.regular})`;
+      searchContainer.style.backgroundSize = "cover";
+      searchContainer.style.backgroundPosition = "center";
+    };
+
+    fetchingArandomPhoto();
+  }, []);
 
   return (
     <div className="search-container">
