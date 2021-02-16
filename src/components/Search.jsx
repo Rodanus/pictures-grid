@@ -55,21 +55,23 @@ export default function Search({ setPhotos }) {
 
   return (
     <div className="search-container">
-      <div className="app-info">
-        <h1>Photozia</h1>
-        <h2 className="api-provider-details">
-          using <a href="https://unsplash.com/">Unsplash</a> api
-        </h2>
-      </div>
-      <div className="search-con">
-        <img src={searchIcon} alt="Search Icon SVG" className="search-icon" />
+      <div className="search-background-overlay">
+        <div className="app-info">
+          <h1>Photozia</h1>
+          <h2 className="api-provider-details">
+            using <a href="https://unsplash.com/">Unsplash</a> api
+          </h2>
+        </div>
+        <div className="search-con">
+          <img src={searchIcon} alt="Search Icon SVG" className="search-icon" />
 
-        <input
-          type="text"
-          value={value}
-          placeholder="Search"
-          onChange={e => onChange(e)}
-        />
+          <input
+            type="text"
+            value={value}
+            placeholder="Search"
+            onChange={e => onChange(e)}
+          />
+        </div>
       </div>
     </div>
   );
