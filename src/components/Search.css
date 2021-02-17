@@ -2,13 +2,42 @@
   height: 80%;
 }
 
+.search-section,
 .search-background-overlay {
-  width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.search-background-overlay {
+  width: 100%;
+  height: 100%;
   background: rgba(0, 0, 0, 0.46);
+}
+
+.search-section {
+  /* outline: 1px solid skyblue; */
+  width: 50%;
+}
+
+.app-info {
+  text-align: left;
+  margin-right: auto;
+}
+
+.project-name {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.project-description {
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+.project-desc-link {
   color: #fff;
 }
 
@@ -16,9 +45,9 @@
   background: #fff;
   display: flex;
   justify-content: flex-start;
-  width: 37%;
+  width: 100%;
+  height: 55px;
   padding-left: 10px;
-  margin: 0 auto 10%;
   border: 2px solid gray;
   border-radius: 10px;
 }
