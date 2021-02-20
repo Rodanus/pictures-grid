@@ -3,9 +3,11 @@ import axios from "axios";
 import debounce from "lodash/debounce";
 import "./Search.css";
 import searchIcon from "../svg/search-icon.svg";
+import { Redirect } from "react-router-dom";
 
 export default function Search({ setPhotos }) {
   const [value, setValue] = useState("");
+  const [query, setQuery] = useState("");
 
   const getPhotos = value => {
     // To get rid of extra spaces
@@ -33,25 +35,35 @@ export default function Search({ setPhotos }) {
 
   const onChange = e => {
     setValue(e.target.value);
-    debouncedGetPhotos(e.target.value);
+    // debouncedGetPhotos(e.target.value);
+    // setQuery(e.target.value);
   };
 
-  useEffect(() => {
-    // Set a random nature photo from collections as the background.
-    const fetchingArandomPhoto = async () => {
-      const backgroundPhoto = await fetch(
-        `https://api.unsplash.com/photos/random?orientation=landscape&collections=30098596,8266650,9468595&content_filter=high&client_id=${process.env.REACT_APP_CLIENTID}`
-      ).then(res => res.json());
+  const handleOnSubmit = e => {
+    setQuery(value);
+    e.preventDefault();
+  };
 
-      const searchContainer = document.querySelector(".search-container");
+  // useEffect(() => {
+  //   // Set a random nature photo from collections as the background.
+  //   const fetchingArandomPhoto = async () => {
+  //     const backgroundPhoto = await fetch(
+  //       `https://api.unsplash.com/photos/random?orientation=landscape&collections=30098596,8266650,9468595&content_filter=high&client_id=${process.env.REACT_APP_CLIENTID}`
+  //     ).then(res => res.json());
 
-      searchContainer.style.background = `url(${backgroundPhoto.urls.regular})`;
-      searchContainer.style.backgroundSize = "cover";
-      searchContainer.style.backgroundPosition = "center";
-    };
+  //     const searchContainer = document.querySelector(".search-container");
 
-    fetchingArandomPhoto();
-  }, []);
+  //     searchContainer.style.background = `url(${backgroundPhoto.urls.regular})`;
+  //     searchContainer.style.backgroundSize = "cover";
+  //     searchContainer.style.backgroundPosition = "center";
+  //   };
+
+  //   fetchingArandomPhoto();
+  // }, []);
+
+  if (query) {
+    return <Redirect to={`/search/${value}`} />;
+  }
 
   return (
     <div className="search-container">
@@ -78,12 +90,16 @@ export default function Search({ setPhotos }) {
               className="search-icon"
             />
 
-            <input
-              type="text"
-              value={value}
-              placeholder="Search"
-              onChange={e => onChange(e)}
-            />
+            <form onSubmit={e => handleOnSubmit(e)}>
+              <input
+                type="text"
+                value={value}
+                placeholder="Search"
+                onChange={e => onChange(e)}
+              />
+
+              <input type="submit" />
+            </form>
           </div>
         </div>
       </div>
