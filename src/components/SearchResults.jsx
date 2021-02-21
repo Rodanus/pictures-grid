@@ -16,8 +16,10 @@ export default function SearchResults({ match }) {
 
   return (
     <section className="search-results">
-      {match.params.query}:
-      <PhotosList photos={photos} />
+      <PhotosList
+        photos={photos}
+        title={`Your Search Results For '${match.params.query}':`}
+      />
     </section>
   );
 }

@@ -24,7 +24,7 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Search setPhotos={setPhotos} />
-            <PhotosList photos={photos} />
+            <PhotosList photos={photos} title="For You To Check:" />
           </Route>
           <Route path="/search/:query" component={SearchResults} />
         </Switch>
