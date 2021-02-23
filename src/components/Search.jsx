@@ -84,21 +84,20 @@ export default function Search({ setPhotos }) {
           </div>
 
           <div className="search-con">
-            <img
-              src={searchIcon}
-              alt="Search Icon SVG"
-              className="search-icon"
-            />
-
             <form onSubmit={e => handleOnSubmit(e)}>
+              <button className="search-button">
+                <img
+                  src={searchIcon}
+                  alt="Search Icon SVG"
+                  className="search-icon"
+                />
+              </button>
               <input
                 type="text"
                 value={value}
                 placeholder="Search"
                 onChange={e => onChange(e)}
               />
-
-              <input type="submit" />
             </form>
           </div>
         </div>
