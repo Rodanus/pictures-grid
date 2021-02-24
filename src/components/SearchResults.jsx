@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PhotosList from "./PhotosList";
+import "./SearchResults.css";
 
 export default function SearchResults({ match }) {
   const [photos, setPhotos] = useState([]);
@@ -15,11 +16,13 @@ export default function SearchResults({ match }) {
   }, []);
 
   return (
-    <section className="search-results">
-      <PhotosList
-        photos={photos}
-        title={`Your Search Results For '${match.params.query}':`}
-      />
-    </section>
+    <div className="search-results-container">
+      <section className="search-results">
+        <PhotosList
+          photos={photos}
+          title={`Your Search Results For '${match.params.query}'`}
+        />
+      </section>
+    </div>
   );
 }
