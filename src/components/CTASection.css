@@ -1,0 +1,42 @@
+.search-container {
+  height: 80%;
+  margin-bottom: 60px;
+}
+
+.search-section,
+.search-background-overlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.search-background-overlay {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.46);
+}
+
+.search-section {
+  width: 50%;
+}
+
+.app-info {
+  text-align: left;
+  margin-right: auto;
+}
+
+.project-name {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.project-description {
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+.project-desc-link {
+  color: #fff;
+}

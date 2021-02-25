@@ -1,9 +1,13 @@
 import React from "react";
+import CTASection from "./CTASection";
+import RandomPhotos from "./RandomPhotos";
+import "./Homepage.css";
 
 export default function Homepage() {
   return (
     <main className="homepage">
-      <h1>this the homepage</h1>
+      <CTASection />
+      <RandomPhotos />
     </main>
   );
 }

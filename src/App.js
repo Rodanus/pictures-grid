@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import Homepage from "./components/Homepage";
 import Search from "./components/Search";
 import PhotosList from "./components/PhotosList";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -23,7 +24,7 @@ function App() {
       <div className="App">
         <Switch>
           <Route exact path="/">
-            <Search setPhotos={setPhotos} />
+            <Homepage />
             <PhotosList photos={photos} title="For You To Check:" />
           </Route>
           <Route path="/search/:query" component={SearchResults} />
