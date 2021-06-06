@@ -3,48 +3,39 @@ import axios from "axios";
 import debounce from "lodash/debounce";
 import "./Search.css";
 import searchIcon from "../svg/search-icon.svg";
-import { Redirect } from "react-router-dom";
+import { Redirect, useLocation } from "react-router-dom";
 
-export default function Search({ setPhotos }) {
+export default function Search(props) {
   const [value, setValue] = useState("");
   const [query, setQuery] = useState("");
+  const currentLocation = useLocation();
+  const isResultsPage = currentLocation.pathname.includes("search");
 
-  const getPhotos = value => {
+  const updateURL = () => {
     // To get rid of extra spaces
     const trimedValue = value.trim();
 
     // Checks whether the value is empty or not
     if (trimedValue) {
-      console.log("Calling the api...");
-      axios
-        .get(
-          `https://api.unsplash.com/search/photos?page=1&per_page=10&query=${trimedValue}&client_id=${process.env.REACT_APP_CLIENTID}`
-        )
-        .then(res => {
-          setPhotos(res.data.results);
-          console.log(res.data.results);
-        });
+      props.history.push(`/search/${value}`);
     }
   };
 
-  // https://medium.com/@rajeshnaroth/using-throttle-and-debounce-in-a-react-function-component-5489fc3461b3
-  const debouncedGetPhotos = useCallback(
-    debounce(value => getPhotos(value), 500),
-    []
-  );
-
   const onChange = e => {
     setValue(e.target.value);
-    // debouncedGetPhotos(e.target.value);
-    // setQuery(e.target.value);
   };
 
   const handleOnSubmit = e => {
     setQuery(value);
     e.preventDefault();
+
+    if (isResultsPage) {
+      updateURL();
+    }
   };
 
-  if (query) {
+  // If user is on home page redirect to results page
+  if (!isResultsPage && query) {
     return <Redirect to={`/search/${value}`} />;
   }
 
