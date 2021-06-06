@@ -11,12 +11,14 @@ export default function Search(props) {
   const currentLocation = useLocation();
   const isResultsPage = currentLocation.pathname.includes("search");
 
+  const removeWhitespace = value => value.trim();
+
   const updateURL = () => {
     // To get rid of extra spaces
-    const trimedValue = value.trim();
+    const valueWithoutWhitespace = removeWhitespace(value);
 
     // Checks whether the value is empty or not
-    if (trimedValue) {
+    if (valueWithoutWhitespace) {
       props.history.push(`/search/${value}`);
     }
   };
@@ -26,11 +28,13 @@ export default function Search(props) {
   };
 
   const handleOnSubmit = e => {
-    setQuery(value);
     e.preventDefault();
+    if (removeWhitespace(value)) {
+      setQuery(value);
 
-    if (isResultsPage) {
-      updateURL();
+      if (isResultsPage) {
+        updateURL();
+      }
     }
   };
 
