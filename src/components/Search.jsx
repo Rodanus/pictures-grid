@@ -5,11 +5,19 @@ import "./Search.css";
 import searchIcon from "../svg/search-icon.svg";
 import { Redirect, useLocation } from "react-router-dom";
 
-export default function Search(props) {
+export default function Search({ history }) {
   const [value, setValue] = useState("");
   const [query, setQuery] = useState("");
   const currentLocation = useLocation();
   const isResultsPage = currentLocation.pathname.includes("search");
+
+  useEffect(() => {
+    if (isResultsPage) {
+      // To change the text in the search input when it first loads on results page.
+      const searchedForWord = history.location.pathname.split("/")[2];
+      setValue(searchedForWord);
+    }
+  }, []);
 
   const removeWhitespace = value => value.trim();
 
@@ -19,7 +27,7 @@ export default function Search(props) {
 
     // Checks whether the value is empty or not
     if (valueWithoutWhitespace) {
-      props.history.push(`/search/${value}`);
+      history.push(`/search/${value}`);
     }
   };
 
