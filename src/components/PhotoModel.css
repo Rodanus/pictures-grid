@@ -1,0 +1,38 @@
+.view-photo-model {
+  padding: 20px 40px;
+  width: 90%;
+  height: 100%;
+  background: #ffffff;
+  position: absolute;
+  top: 54%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.photo-details,
+.user-info {
+  display: flex;
+}
+
+.photo-details {
+  justify-content: space-between;
+  align-items: center;
+}
+
+* {
+  /* outline: 1px solid skyblue; */
+}
+
+.user-info {
+  text-align: left;
+}
+
+.user-personal-pic {
+  border-radius: 80px;
+  margin-right: 10px;
+  width: 50px;
+}
+
+.full-width {
+  width: 100%;
+}

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PhotosList from "./PhotosList";
 import Search from "./Search";
+import PhotoModel from "./PhotoModel";
 import "./SearchResults.css";
 import { Link, useLocation } from "react-router-dom";
 
@@ -10,7 +11,18 @@ export default function SearchResults(props) {
     foundResults: false,
     wordSearchedFor: ""
   });
+  const [viewPhoto, setViewPhoto] = useState({
+    viewPhoto: false,
+    urls: {},
+    user: {},
+    links: {}
+  });
   const currentLocation = useLocation();
+
+  const enableViewPhoto = photo => {
+    const { urls, user, links } = photo;
+    setViewPhoto({ viewPhoto: [!viewPhoto], urls, user, links });
+  };
 
   // Update whenever the url changes.
   useEffect(() => {
@@ -36,13 +48,19 @@ export default function SearchResults(props) {
 
   return (
     <div className="search-results-container">
+      <PhotoModel viewPhoto={viewPhoto} />
+
       <Link to="/" className="home-link">
         Home
       </Link>
       <Search history={props.history} />
       <section className="search-results">
         {result.foundResults ? (
-          <PhotosList photos={photos} title={`Your Search Results:`} />
+          <PhotosList
+            photos={photos}
+            title={`Your Search Results:`}
+            enableViewPhoto={enableViewPhoto}
+          />
         ) : (
           <h2 className="no-results-found-text">
             No Results Found For: {result.word}
