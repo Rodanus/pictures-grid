@@ -1,9 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import PhotosList from "./PhotosList";
+import PhotoModel from "./PhotoModel";
 import "./RandomPhotos.css";
 
 export default function RandomPhotos() {
   const [photos, setPhotos] = useState([]);
+  const [viewPhoto, setViewPhoto] = useState({
+    viewPhoto: false,
+    urls: {},
+    user: {},
+    links: {}
+  });
+  const enableViewPhoto = photo => {
+    const { urls, user, links } = photo;
+    setViewPhoto({ viewPhoto: [!viewPhoto], urls, user, links });
+  };
 
   // useEffect(() => {
   //   const fetchingData = async () => {
@@ -15,5 +26,14 @@ export default function RandomPhotos() {
   //   fetchingData();
   // }, []);
 
-  return <PhotosList photos={photos} title="For You To Check:" />;
+  return (
+    <Fragment>
+      <PhotoModel viewPhoto={viewPhoto} />
+      <PhotosList
+        photos={photos}
+        title="For You To Check:"
+        enableViewPhoto={enableViewPhoto}
+      />
+    </Fragment>
+  );
 }
