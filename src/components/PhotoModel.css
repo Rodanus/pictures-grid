@@ -1,12 +1,10 @@
 .view-photo-model {
   padding: 20px 40px;
   width: 90%;
-  height: 100%;
   background: #ffffff;
   position: absolute;
-  top: 54%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%);
 }
 
 .photo-details,
@@ -17,10 +15,6 @@
 .photo-details {
   justify-content: space-between;
   align-items: center;
-}
-
-* {
-  /* outline: 1px solid skyblue; */
 }
 
 .user-info {

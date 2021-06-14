@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useRef, useState } from "react";
 import Overlay from "./Overlay";
 import externalLinkIcon from "../svg/external-link.svg";
 import "./PhotoModel.css";
@@ -6,7 +6,10 @@ import "./PhotoModel.css";
 export default function PhotoModel({ viewPhoto }) {
   const { user, urls, links } = viewPhoto;
 
-  const handleOnClick = e => e.target.classList.toggle("full-width");
+  const handleOnClick = e => {
+    const photo = e.target;
+    photo.classList.toggle("full-width");
+  };
 
   return (
     <Fragment>
