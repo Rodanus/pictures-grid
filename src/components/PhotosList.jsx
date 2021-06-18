@@ -3,7 +3,7 @@ import Photo from "./Photo";
 import "./PhotosList.css";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
-export default function PhotosList({ photos, title, enableViewPhoto }) {
+export default function PhotosList({ photos, title, toggleViewPhoto }) {
   console.log(photos);
   return (
     <section className="photos-list-section">
@@ -15,7 +15,7 @@ export default function PhotosList({ photos, title, enableViewPhoto }) {
               <Photo
                 key={photo.id}
                 photo={photo}
-                enableViewPhoto={enableViewPhoto}
+                toggleViewPhoto={toggleViewPhoto}
               />
             ))}
           </Masonry>

@@ -1,8 +1,8 @@
 import React from "react";
 
-export default function Photo({ photo, enableViewPhoto }) {
+export default function Photo({ photo, toggleViewPhoto }) {
   const handleOnClick = () => {
-    enableViewPhoto(photo);
+    toggleViewPhoto(photo);
   };
 
   return (

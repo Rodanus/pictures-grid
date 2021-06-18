@@ -19,9 +19,13 @@ export default function SearchResults(props) {
   });
   const currentLocation = useLocation();
 
-  const enableViewPhoto = photo => {
-    const { urls, user, links } = photo;
-    setViewPhoto({ viewPhoto: [!viewPhoto], urls, user, links });
+  const toggleViewPhoto = photo => {
+    if (viewPhoto.viewPhoto) {
+      setViewPhoto({ viewPhoto: false });
+    } else {
+      const { urls, user, links } = photo;
+      setViewPhoto({ viewPhoto: true, urls, user, links });
+    }
   };
 
   // Update whenever the url changes.
@@ -48,7 +52,9 @@ export default function SearchResults(props) {
 
   return (
     <div className="search-results-container">
-      <PhotoModel viewPhoto={viewPhoto} />
+      {viewPhoto.viewPhoto ? (
+        <PhotoModel viewPhoto={viewPhoto} toggleViewPhoto={toggleViewPhoto} />
+      ) : null}
 
       <Link to="/" className="home-link">
         Home
@@ -59,7 +65,7 @@ export default function SearchResults(props) {
           <PhotosList
             photos={photos}
             title={`Your Search Results:`}
-            enableViewPhoto={enableViewPhoto}
+            toggleViewPhoto={toggleViewPhoto}
           />
         ) : (
           <h2 className="no-results-found-text">

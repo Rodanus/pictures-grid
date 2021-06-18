@@ -11,9 +11,14 @@ export default function RandomPhotos() {
     user: {},
     links: {}
   });
-  const enableViewPhoto = photo => {
-    const { urls, user, links } = photo;
-    setViewPhoto({ viewPhoto: [!viewPhoto], urls, user, links });
+
+  const toggleViewPhoto = photo => {
+    if (viewPhoto.viewPhoto) {
+      setViewPhoto({ viewPhoto: false });
+    } else {
+      const { urls, user, links } = photo;
+      setViewPhoto({ viewPhoto: true, urls, user, links });
+    }
   };
 
   // useEffect(() => {
@@ -28,11 +33,13 @@ export default function RandomPhotos() {
 
   return (
     <Fragment>
-      <PhotoModel viewPhoto={viewPhoto} />
+      {viewPhoto.viewPhoto ? (
+        <PhotoModel viewPhoto={viewPhoto} toggleViewPhoto={toggleViewPhoto} />
+      ) : null}
       <PhotosList
         photos={photos}
         title="For You To Check:"
-        enableViewPhoto={enableViewPhoto}
+        toggleViewPhoto={toggleViewPhoto}
       />
     </Fragment>
   );

@@ -1,10 +1,18 @@
-import React, { Fragment, useRef, useState } from "react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 import Overlay from "./Overlay";
 import externalLinkIcon from "../svg/external-link.svg";
 import "./PhotoModel.css";
 
-export default function PhotoModel({ viewPhoto }) {
+export default function PhotoModel({ viewPhoto, toggleViewPhoto }) {
   const { user, urls, links } = viewPhoto;
+
+  useEffect(() => {
+    document.addEventListener("keydown", e => {
+      if (e.key === `Escape`) {
+        toggleViewPhoto(viewPhoto);
+      }
+    });
+  }, []);
 
   const handleOnClick = e => {
     const photo = e.target;
