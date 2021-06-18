@@ -23,7 +23,7 @@ export default function PhotoModel({ viewPhoto, toggleViewPhoto }) {
     <Fragment>
       {viewPhoto.viewPhoto && (
         <Fragment>
-          <Overlay />
+          <Overlay toggleViewPhoto={toggleViewPhoto} />
           <div className="view-photo-model">
             <div className="photo-details">
               <div className="user-info">

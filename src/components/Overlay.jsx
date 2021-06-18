@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import "./Overlay.css";
 
-export default function Overlay() {
-  return <div className="overlay"></div>;
+export default function Overlay({ toggleViewPhoto }) {
+  const handleOnClick = () => {
+    toggleViewPhoto();
+  };
+
+  return <div className="overlay" onClick={handleOnClick}></div>;
 }
